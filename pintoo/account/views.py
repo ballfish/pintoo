@@ -27,17 +27,13 @@ def register(request):
     '''
     template = 'account/register.html'
     if request.method == 'GET':
-        return render(request, template, {'userForm':UserForm(),
-                                          'userProfileForm':UserProfileForm()})
+        return render(request, template, {'userForm':UserForm(),})
     # POST
     userForm = UserForm(request.POST)
-    userProfileForm = UserProfileForm(request.POST)
-    if not userForm.is_valid() or not userProfileForm.is_valid():
-        return render(request, template, {'userForm':userForm,
-                                          'userProfileForm':userProfileForm})
+    if not userForm.is_valid():
+        return render(request, template, {'userForm':userForm,})
     user = userForm.save()
     userProfile = UserProfile()
-    userProfile = userProfileForm.save(commit=False)
     userProfile.user = user
     userProfile.name = 'User還未命名'
     userProfile.lavel = 0
@@ -73,7 +69,7 @@ def login(request):
     if nextURL:
         return redirect(nextURL)
     messages.success(request, '登入成功')
-    return redirect('edition:sortEdition')
+    return redirect('main:main')
 
 @login_required
 def logout(request):

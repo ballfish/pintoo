@@ -1,0 +1,12 @@
+{% load staticfiles %}
+{% block content %}
+<div id="form">
+  <h2>新增文章</h2>
+  <form method="post" action="{% url 'main:commodityCreate' %}" enctype="multipart/form-data" >
+  {% csrf_token %}
+  {{ commodityForm.as_p }}
+    <input class=" btn btn-default" type="submit" value="新增">
+    <a class="btn btn-red" href="{% url 'main:main' %}">放棄</a>
+    </form>
+</div><br><br>
+{% endblock %}

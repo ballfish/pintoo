@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from main.models import Pintoo, Commodity
+
+
+admin.site.register(Pintoo)
+admin.site.register(Commodity)
