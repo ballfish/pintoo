@@ -1,0 +1,11 @@
+{% for menus in MENU %}
+  {% for menu in menus %}
+    {% if forloop.first %}
+      <ul>
+        <p>{{ menu.sort }}</p>
+    {% else %}
+      <li><a href={% url 'edition:article' menu.id %}>{{ menu.edition }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+{% endfor %}
