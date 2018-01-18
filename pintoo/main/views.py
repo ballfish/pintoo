@@ -4,11 +4,14 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 
 from main.forms import CommodityForm
+from main.models import Commodity
 from pintoo.settings import BASE_DIR, MEDIA_ROOT
 
 
 def main(request): 
-    context = {} 
+    commoditys = Commodity.objects.all()
+    print(commoditys)
+    context = {'commoditys':commoditys} 
     return render(request, 'main/main.html', context) 
 
 

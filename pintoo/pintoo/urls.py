@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import django.views.static
+
+from pintoo import settings
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^account/', include('account.urls', namespace='account')),
     url(r'^main/', include('main.urls', namespace='main')),
+    url(r'^media/(.*)$', django.views.static.serve, {'document_root' : settings.MEDIA_ROOT}),
     url(r'^.*', include('main.urls')),
 ]
     

@@ -16,5 +16,17 @@
   {% include 'main/menu.html' %}
   <a href="{% url 'main:commodityCreate' %}">新增商品</a>
 </div>
+{% for commodity in commoditys %}
+  <div id="commodity">
+    <div class="commodity">
+      {{ commodity.commodity }}
+    </div>
+    {% if commodity.image1 %}
+    <div><img src="/media/{{ commodity.image1 }}"></div>
+    {% endif %}
+    <div class="clear"></div>
+  </div> <br><br>
+{% endfor %}
+
 </body>
 </html>
